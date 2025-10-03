@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí - Matilde Flores V</title>
+    <link href="style.css" rel="stylesheet"/>
+    <style>
+        .chart-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Matilde Flores V</h1>
+            <p>Estudiante de Diseño UC</p>
+        </header>
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html">Portafolio</a>
+            <a href="about.html" class="active">Sobre mí</a>
+        </nav>
+        <!-- sobremi -->
+        <section class="sobremi">
+            <div class="sobremi-cosas">
+                <p>Soy estudiante de Diseño UC, cursando mi tercer año. Actualmente poseo experiencia en branding, diseño editorial y proyectos industriales. Me apasiona crear diseño crítico y sustentable, además de identidades visuales sólidas y transmitir mensajes claros a través del diseño.</p>
+                
+                <p>Durante mi carrera he trabajado en proyectos editoriales, de ilustración y diseño gráfico, entendiendo siempre las necesidades de los usuarios como principal enfoque para trabajar en creatividad.</p>
+                
+                <p>Mi intención es diseñar narrativas gráficas que dialoguen con las personas, despierten emociones y aporten significado a los proyectos en los que colaboro.</p>
+                
+                <!-- gráfico burbuja -->
+                <div class="chart-container">
+                    <canvas id="myBubbleChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 Matilde Flores V. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#">Behance</a>
+                <a href="https://www.linkedin.com/in/matilde-flores-villarroel-8440b5348/">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myBubbleChart');
+
+        const data = {
+            datasets: [
+                {
+                    label: 'Packaging',
+                    data: [
+                        { x: 2020, y: 40, r: 8 },
+                        { x: 2021, y: 50, r: 10 },
+                        { x: 2022, y: 65, r: 12 },
+                        { x: 2023, y: 75, r: 14 },
+                        { x: 2024, y: 85, r: 15 }
+                    ],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                },
+                {
+                    label: 'Textil',
+                    data: [
+                        { x: 2020, y: 30, r: 6 },
+                        { x: 2021, y: 45, r: 9 },
+                        { x: 2022, y: 55, r: 12 },
+                        { x: 2023, y: 70, r: 16 },
+                        { x: 2024, y: 90, r: 20 }
+                    ],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                },
+                {
+                    label: 'Ilustración',
+                    data: [
+                        { x: 2020, y: 60, r: 10 },
+                        { x: 2021, y: 65, r: 12 },
+                        { x: 2022, y: 70, r: 14 },
+                        { x: 2023, y: 78, r: 16 },
+                        { x: 2024, y: 85, r: 18 }
+                    ],
+                    backgroundColor: 'rgba(255, 205, 86, 0.5)'
+                },
+                {
+                    label: 'Editorial',
+                    data: [
+                        { x: 2020, y: 20, r: 5 },
+                        { x: 2021, y: 30, r: 8 },
+                        { x: 2022, y: 45, r: 12 },
+                        { x: 2023, y: 60, r: 14 },
+                        { x: 2024, y: 80, r: 16 }
+                    ],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)'
+                },
+                {
+                    label: 'Branding',
+                    data: [
+                        { x: 2020, y: 50, r: 10 },
+                        { x: 2021, y: 60, r: 14 },
+                        { x: 2022, y: 70, r: 16 },
+                        { x: 2023, y: 85, r: 20 },
+                        { x: 2024, y: 95, r: 22 }
+                    ],
+                    backgroundColor: 'rgba(153, 102, 255, 0.5)'
+                },
+                {
+                    label: 'UX/UI',
+                    data: [
+                        { x: 2020, y: 15, r: 4 },
+                        { x: 2021, y: 25, r: 6 },
+                        { x: 2022, y: 35, r: 10 },
+                        { x: 2023, y: 50, r: 12 },
+                        { x: 2024, y: 70, r: 14 }
+                    ],
+                    backgroundColor: 'rgba(255, 159, 64, 0.5)'
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bubble',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: {
+                        display: true,
+                        text: 'Evolución progresiva de mis habilidades de diseño (2020 - 2024)'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Años' },
+                        ticks: { stepSize: 1 },
+                        min: 2020,
+                        max: 2024
+                    },
+                    y: {
+                        title: { display: true, text: 'Nivel de habilidad' },
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>
+
